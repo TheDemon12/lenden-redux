@@ -12,6 +12,7 @@ import { NavLink } from 'react-router-dom';
 const SideNav = () => {
 	const dispatch = useDispatch();
 	const burgerMenu = useSelector(state => state.entities.burgerMenu.isOpen);
+	const user = useSelector(state => state.auth);
 
 	const navLinks = [
 		{
@@ -45,30 +46,33 @@ const SideNav = () => {
 			<Image
 				id='userImageMain'
 				src={
-					// user ? 'https://placekitten.com/g/300/300' :
-					'/images/genericUser.png'
+					user.userId
+						? 'https://placekitten.com/g/300/300'
+						: '/images/genericUser.png'
 				}
 				roundedCircle
 				// onClick={onUserClick}
 			/>
-			{/* {!user && (
+			{!user.userId && (
 				<NavLink
 					id='navAnchor'
 					to='/login'
 					className='menu-item'
-					onClick={onNavLinkClick}>
+					// onClick={onNavLinkClick}
+				>
 					Sign In
 				</NavLink>
 			)}
-			{user && (
+			{user.userId && (
 				<NavLink
 					id='navAnchor'
 					to='/me'
 					className='menu-item'
-					onClick={onNavLinkClick}>
+					// onClick={onNavLinkClick}
+				>
 					My Account
 				</NavLink>
-			)} */}
+			)}
 
 			{navLinks.map((navLink, index) => (
 				<NavLink
@@ -85,11 +89,14 @@ const SideNav = () => {
 				</NavLink>
 			))}
 
-			{/* {user && (
-				<div id='signOutNav' onClick={authService.logout}>
+			{user.userId && (
+				<div
+					id='signOutNav'
+					// onClick={authService.logout}
+				>
 					SIGN OUT
 				</div>
-			)} */}
+			)}
 		</Menu>
 	);
 };

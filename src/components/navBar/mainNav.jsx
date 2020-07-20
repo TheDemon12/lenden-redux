@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { action as toggleMenu } from 'redux-burger-menu';
 
 import { Navbar, Nav, Image, Form } from 'react-bootstrap';
@@ -13,6 +13,7 @@ import {
 
 const MainNav = () => {
 	const dispatch = useDispatch();
+	const user = useSelector(state => state.auth);
 
 	return (
 		<div>
@@ -55,11 +56,9 @@ const MainNav = () => {
 								maxWidth: 42,
 							}}
 							src={
-								'https://placekitten.com/g/300/300'
-
-								// this.props.user
-								// 	? 'https://placekitten.com/g/300/300'
-								// 	: '/images/genericUser.png'
+								user.userId
+									? 'https://placekitten.com/g/300/300'
+									: '/images/genericUser.png'
 							}
 							roundedCircle
 						/>

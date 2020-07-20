@@ -2,11 +2,12 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import MainNav from './navBar/mainNav';
 import SideNav from './navBar/sideNav';
-import { getUser } from '../app/auth';
+import { getUser, getAddress } from '../app/auth';
 
 const Main = () => {
 	const dispatch = useDispatch();
 	dispatch(getUser());
+	dispatch(getAddress());
 
 	return (
 		<React.Fragment>
