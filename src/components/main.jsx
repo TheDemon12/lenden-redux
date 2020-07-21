@@ -1,14 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import MainNav from './navBar/mainNav';
 import SideNav from './navBar/sideNav';
-import { getUser, getAddress } from '../app/auth';
+import { getUser, getAddress } from '../app/auth/user';
 
 const Main = () => {
-	const dispatch = useDispatch();
-	dispatch(getUser());
-	dispatch(getAddress());
-
 	return (
 		<React.Fragment>
 			<SideNav

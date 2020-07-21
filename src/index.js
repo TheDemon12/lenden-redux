@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/scss/bootstrap.scss';
+import 'react-toastify/scss/main.scss';
 import './scss/main.scss';
 import App from './App';
 import store from './app/store';

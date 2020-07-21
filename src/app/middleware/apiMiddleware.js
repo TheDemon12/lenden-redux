@@ -1,7 +1,4 @@
 import http from '../../services/httpService';
-
-import { setToken } from '../../services/authService'; //TODO
-
 import { api } from '../../config.json';
 import { apiCallBegan, apiCallFailed, apiCallSuccess } from '../api';
 
@@ -15,6 +12,7 @@ const apiMiddleware = ({ dispatch, getState }) => next => async action => {
 		onSuccess,
 		onError,
 		onStart,
+		location,
 	} = action.payload;
 
 	if (onStart) dispatch({ type: onStart });
@@ -22,11 +20,22 @@ const apiMiddleware = ({ dispatch, getState }) => next => async action => {
 
 	try {
 		const res = await http[method](`${api}/${url}`, data);
-		dispatch(apiCallSuccess(res.data));
-		if (onSuccess) dispatch({ type: onSuccess, payload: res.data });
+		dispatch(
+			apiCallSuccess({ data: res.data, headers: res.headers, location })
+		);
+		if (onSuccess)
+			dispatch({
+				type: onSuccess,
+				payload: { data: res.data, headers: res.headers, location },
+			});
 	} catch (ex) {
-		dispatch(apiCallFailed(ex.message));
-		if (onError) dispatch({ type: onError, payload: ex.message });
+		if (ex.response) {
+			dispatch(apiCallFailed(ex.response.status));
+			if (onError) dispatch({ type: onError, payload: ex.response.status });
+		} else {
+			dispatch(apiCallFailed(ex.message));
+			if (onError) dispatch({ type: onError, payload: ex.message });
+		}
 	}
 };
 

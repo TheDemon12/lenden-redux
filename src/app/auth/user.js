@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { apiCallBegan } from './api';
-import { getCurrentUser, getToken } from '../services/authService';
+import { apiCallBegan } from '../api';
+import { getCurrentUser, getToken } from '../../services/authService';
 
 const mapToViewModel = data => ({
 	city: data.city,
@@ -14,7 +14,7 @@ const mapToViewModel = data => ({
 });
 
 const slice = createSlice({
-	name: 'auth',
+	name: 'user',
 	initialState: {
 		userId: '',
 		name: '',
@@ -40,7 +40,7 @@ const slice = createSlice({
 				landmark,
 				postalCode,
 				mobileNumber,
-			} = mapToViewModel(action.payload);
+			} = mapToViewModel(action.payload.data);
 			address.city = city;
 			address.country = country;
 			address.houseNumber = houseNumber;
@@ -72,7 +72,7 @@ export const getUser = () => dispatch => {
 };
 
 export const getAddress = () => (dispatch, getState) => {
-	const userId = getState().auth.userId;
+	const userId = getState().auth.user.userId;
 	if (userId)
 		dispatch(
 			apiCallBegan({

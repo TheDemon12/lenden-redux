@@ -6,13 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { slide as Menu } from 'react-burger-menu';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
+
+import { logOutUser } from './../../app/auth/login';
 // import * as authService from './../../services/authService';
 // import Swipe from 'react-easy-swipe';
 
 const SideNav = () => {
 	const dispatch = useDispatch();
 	const burgerMenu = useSelector(state => state.entities.burgerMenu.isOpen);
-	const user = useSelector(state => state.auth);
+	const user = useSelector(state => state.auth.user);
 
 	const navLinks = [
 		{
@@ -58,8 +60,7 @@ const SideNav = () => {
 					id='navAnchor'
 					to='/login'
 					className='menu-item'
-					// onClick={onNavLinkClick}
-				>
+					onClick={() => dispatch(toggleMenu(false))}>
 					Sign In
 				</NavLink>
 			)}
@@ -68,8 +69,7 @@ const SideNav = () => {
 					id='navAnchor'
 					to='/me'
 					className='menu-item'
-					// onClick={onNavLinkClick}
-				>
+					onClick={() => dispatch(toggleMenu(false))}>
 					My Account
 				</NavLink>
 			)}
@@ -90,10 +90,7 @@ const SideNav = () => {
 			))}
 
 			{user.userId && (
-				<div
-					id='signOutNav'
-					// onClick={authService.logout}
-				>
+				<div id='signOutNav' onClick={() => dispatch(logOutUser())}>
 					SIGN OUT
 				</div>
 			)}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { action as toggleMenu } from 'redux-burger-menu';
-
+import { withRouter } from 'react-router-dom';
 import { Navbar, Nav, Image, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,9 +11,9 @@ import {
 	faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 
-const MainNav = () => {
+const MainNav = props => {
 	const dispatch = useDispatch();
-	const user = useSelector(state => state.auth);
+	const user = useSelector(state => state.auth.user);
 
 	return (
 		<div>
@@ -24,7 +24,7 @@ const MainNav = () => {
 					<FontAwesomeIcon icon={faBars} />
 				</Navbar.Brand>
 				<Image
-					onClick={() => this.props.history.push('/')}
+					onClick={() => props.history.push('/')}
 					id='logo'
 					src='/images/navLogo.png'
 				/>
@@ -37,7 +37,7 @@ const MainNav = () => {
 					/>
 				</Nav>
 				<Nav className='ml-auto'>
-					<Nav.Link href='#deets'>
+					<Nav.Link>
 						<FontAwesomeIcon
 							id='mainNavHeart'
 							className='navIcon'
@@ -79,4 +79,4 @@ const MainNav = () => {
 	);
 };
 
-export default MainNav;
+export default withRouter(MainNav);
