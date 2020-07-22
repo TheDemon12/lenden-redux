@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { Switch, Redirect, Route } from 'react-router-dom';
+import ProtectedRoute from './common/protectedRoute';
 import MainNav from './navBar/mainNav';
 import SideNav from './navBar/sideNav';
-import { getUser, getAddress } from '../app/auth/user';
+import NotFound from './common/notFound';
+import NewProduct from './newProduct/newProduct';
 
 const Main = () => {
 	return (
@@ -16,6 +18,11 @@ const Main = () => {
 			// onUserClick={this.handleUserClick}
 			// user={user}
 			/>
+			<Switch>
+				<Route path='/not-found' component={NotFound} />
+				<ProtectedRoute path='/new' exact component={NewProduct} />
+				<Redirect to='/not-found' />
+			</Switch>
 		</React.Fragment>
 	);
 };

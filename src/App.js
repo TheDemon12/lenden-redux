@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import Main from './components/main';
+import Login from './components/sign/login';
+import Signup from './components/sign/signup';
 import { ToastContainer, Flip } from 'react-toastify';
 import { Switch, Route } from 'react-router-dom';
-import Login from './components/sign/login';
 import { useDispatch } from 'react-redux';
 import { getUser, getAddress } from './app/auth/user';
 
@@ -32,7 +33,7 @@ function App() {
 			<React.Fragment>
 				<Switch>
 					<Route path='/login' component={Login} />
-					{/* <Route path='/signup' component={Signup} /> */}
+					<Route path='/signup' component={Signup} />
 					<Route path='/' component={Main} />
 				</Switch>
 			</React.Fragment>

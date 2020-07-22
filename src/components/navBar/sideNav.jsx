@@ -7,7 +7,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 
-import { logOutUser } from './../../app/auth/login';
+import { logOutUser } from '../../app/auth/login';
 // import * as authService from './../../services/authService';
 // import Swipe from 'react-easy-swipe';
 

@@ -21,21 +21,18 @@ class CommonForm extends Component {
 		this.setState({ data });
 	};
 	onDrop = async pictures => {
-		this.setState({ uploading: true });
-
+		this.props.prepareUpload(true);
 		const compressedPictures = await this.compressPictures(pictures);
-		console.log(compressedPictures);
-
 		this.setState({
-			pictures: compressedPictures,
-			uploading: false,
+			images: compressedPictures,
 		});
+		this.props.prepareUpload(false);
 	};
 
 	compressPictures = pictures => {
 		let compressedPictures = [];
 		const options = {
-			maxSizeMB: 0.2,
+			maxSizeMB: 0.1,
 			maxWidthOrHeight: 1920,
 			useWebWorker: true,
 		};
@@ -55,14 +52,8 @@ class CommonForm extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		// this.setState({
-		// 	success: '',
-		// 	error: '',
-		// });
 		const error = this.validate();
-		// this.setState({ error });
 		this.props.updateError(error);
-
 		if (error) return;
 
 		this.doSubmit();
@@ -88,7 +79,7 @@ class CommonForm extends Component {
 
 	renderPassInput(placeholder) {
 		const { data } = this.state;
-		const { passType } = this.props.login;
+		const { passType } = this.props;
 		const { updatePassType } = this.props;
 		const name = 'password';
 		return (
@@ -122,7 +113,7 @@ class CommonForm extends Component {
 	}
 
 	renderAlert = style => {
-		const error = this.props.login.error;
+		const error = this.props.error;
 		return (
 			error && (
 				<Alert style={style} className='error-alert' variant='danger'>
@@ -133,7 +124,7 @@ class CommonForm extends Component {
 	};
 
 	renderSuccessAlert = style => {
-		const success = this.props.login.success;
+		const success = this.props.success;
 		return (
 			success && (
 				<Alert style={style} className='success-alert' variant='primary'>
@@ -149,7 +140,7 @@ class CommonForm extends Component {
 				css={{ display: 'block', ...style }}
 				size={50}
 				color='rgb(253,186,73)'
-				loading={this.props.login.loading}
+				loading={this.props.loading}
 			/>
 		);
 	};
@@ -180,7 +171,7 @@ class CommonForm extends Component {
 	renderProductSelect = (name, label, ...rest) => {
 		const { data } = this.state;
 		return (
-			<Form.Group>
+			<Form.Group key={name}>
 				<Form.Label>{label}</Form.Label>
 				<Form.Control
 					name={name}
@@ -237,8 +228,12 @@ class CommonForm extends Component {
 	};
 
 	renderUploadingAlert = () => {
-		const { uploading } = this.state;
-		return uploading && <div style={{ textAlign: 'center' }}>Uploading...</div>;
+		const { preparing } = this.props;
+		return (
+			preparing && (
+				<div style={{ textAlign: 'center' }}>Preparing to upload...</div>
+			)
+		);
 	};
 
 	renderHomeButton = () => (

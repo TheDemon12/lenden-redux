@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { apiCallBegan } from './../api';
+import { apiCallBegan } from '../api';
 
 const slice = createSlice({
 	name: 'login',
@@ -44,8 +44,8 @@ const {
 
 export const { loginFulfilled, userLoggedOut } = slice.actions;
 
-export const logInUser = ({ email, password }, location) => {
-	return apiCallBegan({
+export const logInUser = ({ email, password }, location) =>
+	apiCallBegan({
 		method: 'post',
 		url: `users/login`,
 		data: { email, password },
@@ -54,7 +54,6 @@ export const logInUser = ({ email, password }, location) => {
 		onError: loginFailed.type,
 		location,
 	});
-};
 
 export const updateError = error => errorUpdated(error);
 export const updatePassType = type => passTypeUpdated(type);
