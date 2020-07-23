@@ -1,5 +1,5 @@
 .mainContainer {
-	font-family: font(primary);
+	font-family: font(secondary);
 	display: flex;
 	min-height: 100vh;
 	align-items: center;
@@ -52,7 +52,7 @@
 			margin-top: 2vh;
 			font-size: 20px;
 			color: color(secondary);
-			font-weight: 600;
+			font-weight: 500;
 		}
 
 		.form {
@@ -67,6 +67,7 @@
 			color: color(secondary);
 			font-family: font(secondary);
 			font-size: 15px;
+			font-weight: 500;
 		}
 
 		.separator::before,

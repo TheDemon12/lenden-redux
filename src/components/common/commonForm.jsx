@@ -85,7 +85,7 @@ class CommonForm extends Component {
 		return (
 			<InputGroup className='mb-3'>
 				<Form.Control
-					className='input'
+					className={`input ${passType === 'password' ? 'letterSpace' : ''}`}
 					name={name}
 					type={passType}
 					placeholder={placeholder}

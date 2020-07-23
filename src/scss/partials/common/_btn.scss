@@ -5,6 +5,7 @@
 .btn:not(:disabled):not(.disabled):active:focus {
 	color: color(text);
 	font-family: font(secondary);
+	font-weight: 500;
 	background-color: color(accent) !important;
 	box-shadow: none;
 	border: none;
