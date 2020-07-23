@@ -5,7 +5,7 @@ const mapToViewModel = (data, userId) => {
 	return {
 		id: data.productid,
 		name: data.title,
-		category: data.producttype,
+		category: data.producttype.toLowerCase(),
 		desc: data.description,
 		ldc: data.ldc,
 		rating: data.rating,
@@ -19,7 +19,7 @@ const slice = createSlice({
 	name: 'products',
 	initialState: {
 		list: [],
-		page: 1,
+		page: 0,
 		limit: 5,
 		showButton: false,
 		loading: false,

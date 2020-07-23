@@ -6,6 +6,7 @@ import SideNav from './navBar/sideNav';
 import NotFound from './common/notFound';
 import NewProduct from './newProduct/newProduct';
 import Products from './products/products';
+import ProductPage from './productPage/productPage';
 
 const Main = () => {
 	return (
@@ -23,6 +24,7 @@ const Main = () => {
 				<Route path='/not-found' component={NotFound} />
 				<ProtectedRoute path='/new' exact component={NewProduct} />
 				<Route path='/books' exact component={Products} />
+				<Route path='/books/:id' component={ProductPage} />
 				<Redirect to='/not-found' />
 			</Switch>
 		</React.Fragment>

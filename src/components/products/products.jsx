@@ -8,6 +8,7 @@ import { Button } from 'react-bootstrap';
 
 class Products extends CommonForm {
 	componentDidMount = () => {
+		if (this.props.page !== 0) return;
 		this.props.getProducts();
 	};
 
@@ -22,10 +23,11 @@ class Products extends CommonForm {
 							<ProductSelector
 								key={product.id}
 								details={product}
-								// onClick={() =>
-								// 	this.props.history.push(`/${product.category}/${product.id}`)
-								// } //TODO
-								// onClick={() => dispatch(getProducts())}
+								onClick={() =>
+									this.props.history.push(`/${product.category}/${product.id}`)
+								}
+
+								//TODO
 								// onBarter={this.props.onBarter}
 							/>
 						);
@@ -52,6 +54,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
 	products: state.entities.products,
 	loading: state.entities.products.loading,
+	page: state.entities.products.page,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

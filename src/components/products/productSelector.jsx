@@ -14,7 +14,7 @@ const ProductSelector = props => {
 		return () => {
 			window.removeEventListener('resize', () => dispatch(updateDeviceType()));
 		};
-	});
+	}, []);
 	const { details } = props;
 	return isMobile ? (
 		<MobileProduct product={details} onClick={props.onClick} />
