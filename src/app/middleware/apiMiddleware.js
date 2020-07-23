@@ -5,6 +5,7 @@ import { apiCallBegan, apiCallFailed, apiCallSuccess } from '../api';
 const apiMiddleware = ({ dispatch, getState }) => next => async action => {
 	if (action.type !== apiCallBegan.type) return next(action);
 
+	const userId = getState().auth.user.userId;
 	const {
 		method = 'get',
 		url,
@@ -21,12 +22,12 @@ const apiMiddleware = ({ dispatch, getState }) => next => async action => {
 	try {
 		const res = await http[method](`${api}/${url}`, data);
 		dispatch(
-			apiCallSuccess({ data: res.data, headers: res.headers, location })
+			apiCallSuccess({ data: res.data, headers: res.headers, location, userId })
 		);
 		if (onSuccess)
 			dispatch({
 				type: onSuccess,
-				payload: { data: res.data, headers: res.headers, location },
+				payload: { data: res.data, headers: res.headers, location, userId },
 			});
 	} catch (ex) {
 		if (ex.response) {

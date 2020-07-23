@@ -5,6 +5,7 @@ import MainNav from './navBar/mainNav';
 import SideNav from './navBar/sideNav';
 import NotFound from './common/notFound';
 import NewProduct from './newProduct/newProduct';
+import Products from './products/products';
 
 const Main = () => {
 	return (
@@ -21,6 +22,7 @@ const Main = () => {
 			<Switch>
 				<Route path='/not-found' component={NotFound} />
 				<ProtectedRoute path='/new' exact component={NewProduct} />
+				<Route path='/books' exact component={Products} />
 				<Redirect to='/not-found' />
 			</Switch>
 		</React.Fragment>

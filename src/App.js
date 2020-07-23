@@ -9,11 +9,11 @@ import { getUser, getAddress } from './app/auth/user';
 
 function App() {
 	const dispatch = useDispatch();
+	dispatch(getUser());
 
 	useEffect(() => {
-		dispatch(getUser());
 		dispatch(getAddress());
-	});
+	}, [dispatch]);
 
 	return (
 		<React.Fragment>

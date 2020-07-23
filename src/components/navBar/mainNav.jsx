@@ -16,7 +16,7 @@ const MainNav = props => {
 	const user = useSelector(state => state.auth.user);
 
 	return (
-		<div>
+		<div className='mainNavBarGroup'>
 			<Navbar variant='dark' className='mainNav'>
 				<Navbar.Brand
 					onClick={() => dispatch(toggleMenu(true))}

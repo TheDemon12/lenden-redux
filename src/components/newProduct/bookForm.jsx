@@ -84,20 +84,6 @@ class BookForm extends CommonForm {
 		description: Joi.string().min(5).required().label('Description'), //TODO
 	};
 
-	mapToViewModel = (data, imageData) => ({
-		mrp: data.mrp,
-		title: data.title,
-		binding: data.cover,
-		description: data.description,
-		conditionquestion1: data.ques1,
-		conditionquestion2: data.ques2,
-		conditionquestion3: data.ques3,
-		conditionquestion4: data.ques4,
-		conditionquestion5: data.ques5,
-		productid: imageData.productid,
-		productimageentity: imageData.imagelinks.map(e => ({ imagelink: e })),
-	});
-
 	doSubmit = () => {
 		const { data, images } = this.state;
 		this.props.postBook(data, images);
