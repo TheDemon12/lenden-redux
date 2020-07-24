@@ -16,12 +16,12 @@ const SideNav = () => {
 	const user = useSelector(state => state.auth.user);
 
 	const navLinks = [
-		{
-			to: '/notifications',
-			name: 'Notifications',
-			icon: { id: 'sideNavBell', icon: faBell },
-		},
-		{ to: '/wishlist', name: 'Wishlist' },
+		// {
+		// 	to: '/notifications',
+		// 	name: 'Notifications',
+		// 	icon: { id: 'sideNavBell', icon: faBell },
+		// },
+		// { to: '/wishlist', name: 'Wishlist' },
 		{ to: '/my-products', name: 'My Products' },
 		{
 			to: '/',

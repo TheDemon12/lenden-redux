@@ -26,8 +26,8 @@ const ProductPage = props => {
 		};
 	}, [dispatch]);
 
-	if (!productFound) return <Redirect to='/' />;
 	if (loadingPage) return <PageLoader />;
+	if (!productFound) return <Redirect to='/' />;
 	return isMobile ? (
 		<MobileProductPage
 			product={product}

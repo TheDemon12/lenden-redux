@@ -61,7 +61,12 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-const { productsReceived, productsInitiated, pageChanged } = slice.actions;
+const {
+	productsReceived,
+	productsInitiated,
+	pageChanged,
+	buttonStatusChanged,
+} = slice.actions;
 
 export const getProducts = () => async (dispatch, getState) => {
 	const userId = getState().auth.user.userId ? getState().auth.user.userId : '';
@@ -83,3 +88,5 @@ export const getProducts = () => async (dispatch, getState) => {
 		})
 	);
 };
+
+export const changeButtonStatus = value => buttonStatusChanged(value);

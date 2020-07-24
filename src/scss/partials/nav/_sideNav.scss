@@ -86,7 +86,7 @@
 }
 
 a.bm-item {
-	padding: 0.6em;
+	padding: 0.5em;
 	display: block;
 	color: color(text);
 	text-align: center;
@@ -118,11 +118,11 @@ a.bm-item {
 
 #navAnchor {
 	text-align: center;
-	margin-bottom: 2vh;
+	margin-top: 2vh;
 
-	@media screen and (max-width: breakpoint(mobileXL)) {
-		margin-bottom: 4vh;
-	}
+	// @media screen and (max-width: breakpoint(mobileXL)) {
+	// 	margin-top: 4vh;
+	// }
 }
 
 #homeAnchor {

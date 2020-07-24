@@ -12,8 +12,12 @@
 
 		#logo {
 			width: 4em;
-			margin: auto 0.5rem;
+			margin: auto 1.5rem;
 			cursor: pointer;
+
+			@media screen and (max-width: 870px) {
+				margin: auto 1rem;
+			}
 
 			@media screen and (max-width: breakpoint(mobileS)) {
 				width: 2em;
@@ -21,36 +25,84 @@
 			}
 		}
 
+		.category {
+			text-transform: uppercase;
+			font-family: font(secondary);
+			font-weight: 500;
+			// color: color(white);
+			font-size: 16px;
+
+			@media screen and (max-width: 870px) {
+				display: none;
+			}
+
+			a {
+				color: color(text);
+				text-decoration: none;
+			}
+			.dropdown-menu {
+				border-radius: 3px;
+				background-clip: border-box;
+				background-color: color(white);
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+				a {
+					font-weight: 500;
+					color: color(primary);
+					text-decoration: none;
+				}
+
+				:hover,
+				:active {
+					background-color: color(background);
+				}
+			}
+
+			.active {
+				color: color(accent);
+			}
+		}
+
 		#navSearchBox {
 			display: flex;
 			background-color: color(secondary);
-			border-radius: 5px;
+			border-radius: 3px;
+			height: 2.5rem;
+			margin: auto;
+			margin-right: 1vw;
 
 			@media screen and (max-width: breakpoint(mobileXL)) {
 				display: none;
 			}
 
 			#navSearchIcon {
-				font-size: 18px;
+				font-size: 16px;
 				color: color(text);
-				margin: auto 1.5vw;
+				margin: auto 0.5rem auto 1.5rem;
+
+				@media screen and (max-width: 870px) {
+					margin: auto 0.2rem auto 1.2rem;
+				}
 			}
 
 			#navSearchInput {
 				color: color(text);
-				width: 55vw;
-				margin-right: 12px;
+				width: 30vw;
 				background-color: color(secondary);
 				border: none;
 				box-shadow: none;
+				height: inherit;
 
-				@media screen and (max-width: breakpoint(tablet)) {
+				@media screen and (max-width: 950px) {
 					color: color(text);
-					width: 40vw;
+					width: 25vw;
+				}
+
+				@media screen and (max-width: 870px) {
+					width: 35vw;
 				}
 			}
 			#navSearchInput::placeholder {
-				text-align: center;
+				text-align: left;
 			}
 
 			#navSearchInput:-webkit-autofill,
