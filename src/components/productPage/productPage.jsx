@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { updateDeviceType } from '../../app/entities/common';
-import { getProduct } from '../../app/entities/productPage';
+import { getProduct, setLoadingPage } from '../../app/entities/productPage';
 import MobileProductPage from './mobileProductPage';
 import DesktopProductPage from './desktopProductPage';
 import PageLoader from './../common/pageLoader';
@@ -13,9 +13,11 @@ const ProductPage = props => {
 	const { isMobile } = useSelector(state => state.entities.common);
 	dispatch(updateDeviceType());
 
-	const { product, loadingPage, productFound } = useSelector(
+	const { loadingPage, productFound } = useSelector(
 		state => state.entities.productPage
 	);
+
+	const { product } = useSelector(state => state.entities.productPage);
 
 	useEffect(() => {
 		dispatch(getProduct(props.match.params.id));
@@ -23,6 +25,7 @@ const ProductPage = props => {
 
 		return () => {
 			window.removeEventListener('resize', () => dispatch(updateDeviceType()));
+			dispatch(setLoadingPage(true));
 		};
 	}, [dispatch]);
 

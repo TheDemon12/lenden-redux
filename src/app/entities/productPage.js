@@ -50,17 +50,27 @@ const slice = createSlice({
 			state.productFound = false;
 			state.loadingPage = false;
 		},
+		loadingPageChanged: (state, action) => {
+			state.loadingPage = action.payload;
+		},
 	},
 });
 
 export default slice.reducer;
 
-const { productReceived, productInitiated, productFailed } = slice.actions;
+const {
+	productReceived,
+	productInitiated,
+	productFailed,
+	loadingPageChanged,
+} = slice.actions;
 
+export const setLoadingPage = status => loadingPageChanged(status);
 export const getProduct = id => (dispatch, getState) => {
 	const userId = getState().auth.user.userId ? getState().auth.user.userId : '';
 	const { id: idInState } = getState().entities.productPage.product;
-	if (idInState === id) return;
+	if (idInState === id) return dispatch(setLoadingPage(false));
+
 	dispatch(
 		apiCallBegan({
 			method: 'post',
