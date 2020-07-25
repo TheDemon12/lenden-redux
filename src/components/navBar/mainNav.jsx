@@ -30,13 +30,15 @@ const MainNav = props => {
 					src='/images/navLogo.png'
 				/>
 
-				<Nav.Link className='category'>
-					<NavLink to='/books'>Books</NavLink>
-				</Nav.Link>
-				<Nav.Link className='category'>
-					<NavLink to='/mobiles'>Mobiles</NavLink>
-				</Nav.Link>
-				<NavDropdown className='category active' title='Gaming'>
+				<NavLink className='nav-link category' to='/books'>
+					Books
+				</NavLink>
+
+				<NavLink className='nav-link category' to='/mobiles'>
+					Mobiles
+				</NavLink>
+
+				<NavDropdown className='category dropdownCategory' title='Gaming'>
 					<LinkContainer to='/gaming/cd'>
 						<NavDropdown.Item>Gaming CDs</NavDropdown.Item>
 					</LinkContainer>

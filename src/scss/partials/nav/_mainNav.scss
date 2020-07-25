@@ -31,34 +31,40 @@
 			font-weight: 500;
 			// color: color(white);
 			font-size: 16px;
+			color: color(text);
+			text-decoration: none;
 
 			@media screen and (max-width: 870px) {
 				display: none;
 			}
+		}
+		.active {
+			color: color(accent);
+		}
 
+		.dropdownCategory {
 			a {
 				color: color(text);
 				text-decoration: none;
 			}
-			.dropdown-menu {
-				border-radius: 3px;
-				background-clip: border-box;
-				background-color: color(white);
-				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-				a {
-					font-weight: 500;
-					color: color(primary);
-					text-decoration: none;
-				}
+		}
 
-				:hover,
-				:active {
-					background-color: color(background);
-				}
+		.dropdown-menu {
+			text-transform: uppercase;
+			border-radius: 3px;
+			background-clip: border-box;
+			background-color: color(white);
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			font-family: font(secondary);
+			a {
+				font-weight: 500;
+				color: color(primary);
+				text-decoration: none;
 			}
 
-			.active {
-				color: color(accent);
+			:hover,
+			:active {
+				background-color: color(background);
 			}
 		}
 

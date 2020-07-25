@@ -8,6 +8,7 @@ import NewProduct from './newProduct/newProduct';
 import Products from './products/products';
 import ProductPage from './productPage/productPage';
 import Home from './home/home';
+import MyProducts from './myProducts/myProducts';
 
 const Main = () => {
 	return (
@@ -26,7 +27,8 @@ const Main = () => {
 				<ProtectedRoute path='/new' exact component={NewProduct} />
 				<Route path='/books' exact component={Products} />
 				<Route path='/books/:id' component={ProductPage} />
-				<Route path='/' component={Home} />
+				<Route path='/my-products' component={MyProducts} />
+				<Route path='/' exact component={Home} />
 				<Redirect to='/not-found' />
 			</Switch>
 		</React.Fragment>
