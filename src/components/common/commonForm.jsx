@@ -237,9 +237,11 @@ class CommonForm extends Component {
 	};
 
 	renderHomeButton = () => (
-		<FontAwesomeIcon
+		<img
+			className='icon'
 			onClick={() => this.props.history.goBack()}
-			icon={faAngleDoubleLeft}
+			src='/icons/back.svg'
+			alt=''
 		/>
 	);
 }

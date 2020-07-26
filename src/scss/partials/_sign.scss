@@ -8,7 +8,7 @@
 	.formBox {
 		background-color: color(white);
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-		border-radius: 10px;
+		border-radius: 3px;
 		padding: 50px;
 		width: 90vw;
 		// margin: auto;
@@ -38,9 +38,12 @@
 				left: 20px;
 			}
 
-			svg {
-				font-size: 30px;
-				color: color(accent);
+			img {
+				width: 38px;
+
+				@media screen and (max-width: 500px) {
+					width: 45px;
+				}
 			}
 		}
 

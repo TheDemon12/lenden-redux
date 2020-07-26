@@ -82,6 +82,7 @@
 
 			#navSearchIcon {
 				margin: auto 0.5rem auto 1.5rem;
+				width: 20px;
 
 				@media screen and (max-width: 870px) {
 					margin: auto 0.2rem auto 1.2rem;
@@ -166,6 +167,8 @@
 
 			#mobileSearchIcon {
 				margin: auto 2.5vw;
+				width: 20px;
+
 				@media screen and (max-width: breakpoint(mobileS)) {
 					display: none;
 				}
