@@ -81,8 +81,6 @@
 			}
 
 			#navSearchIcon {
-				font-size: 16px;
-				color: color(text);
 				margin: auto 0.5rem auto 1.5rem;
 
 				@media screen and (max-width: 870px) {
@@ -122,11 +120,16 @@
 	}
 
 	.nav-link {
-		margin: auto 0.2vw;
+		margin: auto 0.15vw;
 
 		@media screen and (max-width: breakpoint(mobileXL)) {
 			margin: auto 0.1vw;
 		}
+	}
+
+	.iconNav {
+		padding-left: 6px !important;
+		padding-right: 6px !important;
 	}
 
 	.navbar-brand {
@@ -163,9 +166,6 @@
 
 			#mobileSearchIcon {
 				margin: auto 2.5vw;
-				font-size: 18px;
-				color: color(text);
-
 				@media screen and (max-width: breakpoint(mobileS)) {
 					display: none;
 				}

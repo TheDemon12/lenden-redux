@@ -3,14 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { action as toggleMenu } from 'redux-burger-menu';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Navbar, Nav, Image, Form, NavDropdown } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LinkContainer } from 'react-router-bootstrap';
-import {
-	faBars,
-	faHeart,
-	faBell,
-	faSearch,
-} from '@fortawesome/free-solid-svg-icons';
 
 const MainNav = props => {
 	const dispatch = useDispatch();
@@ -22,7 +15,7 @@ const MainNav = props => {
 				<Navbar.Brand
 					onClick={() => dispatch(toggleMenu(true))}
 					style={{ cursor: 'pointer' }}>
-					<FontAwesomeIcon icon={faBars} />
+					<img className='icon' src='/icons/menu.svg' alt='' />
 				</Navbar.Brand>
 				<Image
 					onClick={() => props.history.push('/')}
@@ -52,22 +45,23 @@ const MainNav = props => {
 
 				<Nav className='ml-auto'>
 					<div id='navSearchBox'>
-						<FontAwesomeIcon id='navSearchIcon' icon={faSearch} />
+						<img
+							className='icon'
+							id='navSearchIcon'
+							src='/icons/search.svg'
+							alt=''
+						/>
 						<Form.Control
 							id='navSearchInput'
 							type='text'
 							placeholder='Search for products'
 						/>
 					</div>
-					<Nav.Link>
-						<FontAwesomeIcon
-							id='mainNavHeart'
-							className='navIcon'
-							icon={faHeart}
-						/>
+					<Nav.Link className='iconNav'>
+						<img className='icon' src='/icons/bookmark.svg' alt='' />
 					</Nav.Link>
-					<Nav.Link>
-						<FontAwesomeIcon className='navIcon' icon={faBell} />
+					<Nav.Link className='iconNav'>
+						<img className='icon' src='/icons/bell.svg' alt='' />
 					</Nav.Link>
 					<Nav.Link
 						id='userImage'
@@ -89,7 +83,12 @@ const MainNav = props => {
 			</Navbar>
 			<div id='mobileSearchBox'>
 				<div className='ml-auto' id='mobileSearchBoxItem'>
-					<FontAwesomeIcon id='mobileSearchIcon' icon={faSearch} />
+					<img
+						className='icon'
+						id='mobileSearchIcon'
+						src='/icons/search.svg'
+						alt=''
+					/>
 					<Form.Control
 						id='mobileSearchInput'
 						type='text'

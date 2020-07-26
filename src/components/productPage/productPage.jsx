@@ -13,11 +13,9 @@ const ProductPage = props => {
 	const { isMobile } = useSelector(state => state.entities.common);
 	dispatch(updateDeviceType());
 
-	const { loadingPage, productFound } = useSelector(
+	const { product, loadingPage, productFound } = useSelector(
 		state => state.entities.productPage
 	);
-
-	const { product } = useSelector(state => state.entities.productPage);
 
 	useEffect(() => {
 		dispatch(getProduct(props.match.params.id));
@@ -30,7 +28,7 @@ const ProductPage = props => {
 	}, [dispatch]);
 
 	if (loadingPage) return <PageLoader />;
-	if (!productFound) return <Redirect to='/' />;
+	if (!productFound) return <Redirect to='/not-found' />;
 	return isMobile ? (
 		<MobileProductPage
 			product={product}
