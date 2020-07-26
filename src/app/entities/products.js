@@ -46,8 +46,8 @@ const slice = createSlice({
 				)
 			);
 
-			products.loading = false;
-			products.loadingPage = false;
+			// products.loading = false;
+			// products.loadingPage = false;
 
 			if (action.payload.data.length < products.limit)
 				products.showButton = false;
@@ -55,6 +55,10 @@ const slice = createSlice({
 		},
 		buttonStatusChanged: (products, action) => {
 			products.showButton = action.payload;
+		},
+		changeLoadingStatus: (products, action) => {
+			products.loading = action.payload;
+			products.loadingPage = action.payload;
 		},
 	},
 });
@@ -66,6 +70,7 @@ const {
 	productsInitiated,
 	pageChanged,
 	buttonStatusChanged,
+	changeLoadingStatus,
 } = slice.actions;
 
 export const getProducts = () => async (dispatch, getState) => {
@@ -75,7 +80,7 @@ export const getProducts = () => async (dispatch, getState) => {
 	const currPage = Math.ceil(list.length / limit) + 1;
 	if (page !== currPage) await dispatch(pageChanged(currPage));
 
-	dispatch(
+	await dispatch(
 		apiCallBegan({
 			method: 'post',
 			url: `products/product/?page=${currPage}&limit=${limit}`,
@@ -87,6 +92,7 @@ export const getProducts = () => async (dispatch, getState) => {
 			onSuccess: productsReceived.type,
 		})
 	);
+	dispatch(changeLoadingStatus(false));
 };
 
 export const changeButtonStatus = value => buttonStatusChanged(value);
