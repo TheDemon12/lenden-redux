@@ -63,10 +63,7 @@ const MainNav = props => {
 					<Nav.Link className='iconNav'>
 						<img className='icon' src='/icons/bell.svg' alt='' />
 					</Nav.Link>
-					<Nav.Link
-						id='userImage'
-						// onClick={this.props.onUserClick}
-					>
+					<Nav.Link id='userImage' onClick={() => props.history.push('/me')}>
 						<Image
 							style={{
 								maxWidth: 42,
